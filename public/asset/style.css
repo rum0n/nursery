@@ -1,0 +1,145 @@
+body{
+margin:0;
+padding:0;
+ font-family: 'Orbitron', sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p,ul,li,span{margin:0px; padding:0px;}
+
+.header_area{
+  min-height:700px;
+  background:url('../asset/image/bck.jpg');
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  margin-top:-100px;
+ 
+}
+.form_area{
+  margin-top: 70px;
+  padding-top: 15px;
+  background: rgba(0,0,0,.6);
+}
+.form_area input{
+  background: transparent;
+  border-radius: 0px;
+  color: white;
+}
+.tree_div{
+  min-height: 500px;
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+.tree_div img{min-height: 200px;max-height: 200px;width: 100%;margin-top: 10px;}
+
+.register_area{
+   min-height: 600px!important;
+}
+.register_area_form{
+    min-height: 300px!important;
+    border: 1px solid black;
+    margin-bottom: 50px;
+    box-shadow: 0px 5px 5px 5px rgba(0,0,0,.7);
+}
+.my_panel{
+  min-height: 600px;
+}
+
+.left_area {
+  min-height: 600px !important;
+  background-color: #ddd;
+  padding-top: 10px;
+}
+.left_area ul li a{font-size: 20px;margin-left: 10px; text-decoration: none!important;}
+.right_area{min-height: 600px!important;background-color: #ddd;}
+.right_area_form{min-height: 400px;border:1px solid white;margin-top: 20px;margin-bottom:20px;box-shadow: 0px 5px 5px 5px rgba(0,0,0,.7);}
+.my_nav{
+  background:rgb(0,0,0,.6)!important;
+  color:white!important;
+  border:0px;
+  border-radius:0px!important;
+  border-bottom: .5px solid white;
+  font-size:17px;
+  padding:10px;
+  z-index: 10;
+}
+.my_nav ul li a{
+  font-size:16px!important;
+  font-weight: bold;
+}
+
+.navbar-brand{color: white;}
+.footer_area_normal{
+   background:rgba(0,0,0,.8);
+   color: white;
+}
+
+.error{
+  color: red;
+}
+ 
+ 
+.footer_area_admin{
+  background-color: skyblue;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+}
+.footer_area{
+  background-color:rgba(0,0,0,.5);
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.all-tree {
+  margin-top: 242px;
+  color: white;
+}
+.error {
+  margin-bottom: 10px;
+}
+
+.paginates {
+  text-align: center;
+  position: relative;
+  left: 610px;
+}
+
+.form-check {
+  margin-left: 12px;
+}
+
+.pay {
+  margin-bottom: 90px;
+}
+
+.cart {
+  margin-left: -83px;
+  color: black;
+  margin-top: 39px;
+}
+
+.order_img {
+  margin-bottom: 25px;
+}
+
+.order_table {
+  width: 180px;
+}
+
+.left_area ul li {
+  text-decoration: none;
+  display: inherit;
+}
+.left_area ul li a {
+  color: #000000;
+}
+
+.left_area ul li a:hover {
+  color: #15dce6;
+}
+
+.left_area ul li .active {
+  color: #15dce6;
+}
+
