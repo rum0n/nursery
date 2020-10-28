@@ -11,7 +11,7 @@
                     @csrf
                     <div class="col-lg-8" >
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg"  name="tree_name" value="{{ old('tree_name') }}" placeholder="Search Here" >
+                            <input type="text" class="form-control input-lg"  name="tree_name" value="{{ old('tree_name') }}" placeholder="Search Here" required>
                         </div>
                     </div>
                     <div class="col-lg-4" >

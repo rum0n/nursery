@@ -25,6 +25,11 @@ class FrontController extends Controller
     //============= Search House =================
     public function search_tree(Request $request)
     {
+        if($request->tree_name == '') {
+            Toastr::warning('Please type something','Empty field!');
+            return redirect()->back();
+        }
+
 //        dd($request->all());
         $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
             ->orwhere('price','LIKE','%'.$request->tree_name."%")
@@ -32,7 +37,7 @@ class FrontController extends Controller
             ->orwhere('category_id','LIKE','%'.$request->tree_name."%")
             ->where('status','Approved')
             ->orderBy('id','DESC')
-            ->paginate(3);
+            ->paginate(6);
 
 
         $rows = $trees->count();
