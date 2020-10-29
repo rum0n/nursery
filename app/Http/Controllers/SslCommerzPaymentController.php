@@ -310,6 +310,7 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
+//        dd($request->all());
 //        echo "Transaction is Successful";
 
 

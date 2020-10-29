@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Tree;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class FrontController extends Controller
             Toastr::warning('Please type something','Empty field!');
             return redirect()->back();
         }
+//        $categories = Category::where('name','LIKE','%'.$request->tree_name."%")->get('id');
+//        dd($categories);
 
-//        dd($request->all());
         $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
             ->orwhere('price','LIKE','%'.$request->tree_name."%")
             ->orwhere('details','LIKE','%'.$request->tree_name."%")
