@@ -154,6 +154,7 @@ class SslCommerzPaymentController extends Controller
             'customer_name'=>'required',
             'customer_address'=>'required',
             'customer_mobile'=>'required',
+            'qty'=>'required|numeric',
 
         ]);
 
@@ -162,7 +163,8 @@ class SslCommerzPaymentController extends Controller
         $tree = Tree::find($id);
 
         $post_data = array();
-        $post_data['total_amount'] = $tree->price; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->total_price; # You cant not pay less than 10
+        $post_data['qty'] = $request->qty; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -210,6 +212,7 @@ class SslCommerzPaymentController extends Controller
                 'customer_email' => $post_data['cus_email'],
                 'customer_mobile' => $post_data['cus_phone'],
                 'amount' => $post_data['total_amount'],
+                'qty' => $post_data['qty'],
                 'status' => 'Pending',
                 'customer_address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
@@ -219,6 +222,9 @@ class SslCommerzPaymentController extends Controller
                 'city' => $post_data['cus_city'],
                 'owner_id' => $post_data['owner_id'],
             ]);
+
+        $tree->qty = $tree->qty - $post_data['qty'];
+        $tree->save();
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )

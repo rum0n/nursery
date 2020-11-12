@@ -82,6 +82,8 @@
                 <div class="col-md-11 col-lg-11">
                     <div class="form-group">
                         <label>Quantity</label>
+                        <input type="hidden" id="price" value="{{$tree->price}}">
+                        <input type="hidden" id="stock" value="{{$tree->qty}}">
                         <input type="number" name="qty" id="qty" value="{{ old('qty') }}" class="form_input form-control input-lg" placeholder="Tree Quantity" min="1" max="{{$tree->qty}}"/>
                     </div>
                 </div>
@@ -89,7 +91,7 @@
                 <div class="col-md-11 col-lg-11">
                     <div class="form-group">
                         <label for="price">Amount to be Paid</label>
-                        <input  type="text" class="form_input form-control input-lg" value="{{ round($tree->price,2) }}" id="price" name="" disabled>
+                        <input id="total" type="text" class="form_input form-control input-lg" value="" name="total_price" readonly>
                     </div>
                 </div>
 
@@ -104,20 +106,20 @@
         </div>
 
 
-
         <div class="col-md-4 cart">
             <div class="col-md-12">
 
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="">Tree</span>
                 </h4>
-                <h5 class="text-right mb-3 mt-1 text-primary"><b>In Stock : {{ $tree->qty }}</b></h5>
+                <h5 class="text-right mb-3 mt-1 text-primary"><b>In Stock : <span id="in_stock">{{ $tree->qty }}</span></b></h5>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                             <h5 class="my-0"><b> Name : {{ $tree->name }}</b></h5>
                             <h5 class="">Category : {{ $tree->category->name }}</h5>
                             <h5 class="">Nursery : {{ $tree->user->name }}</h5>
+                            <h5>Unit Price : {{ $tree->price }} Tk</h5>
 
                         </div>
                         <span class="">{{ str_limit($tree->details,100) }}</span>
@@ -131,7 +133,7 @@
 
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total Price (BDT) : </span>
-                        <strong>{{ $tree->price }} TK</strong>
+                        <strong id="total1"> </strong>
                     </li>
                 </ul>
             </div>
@@ -143,6 +145,33 @@
 
 
 @push('js')
+
+    <script src="http://www.codermen.com/js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#qty').change(function(){
+                var total;
+                var available_stock;
+                var price = $('#price').val();
+                var stock = $('#stock').val();
+                var qty = $('#qty').val();
+                $('#qty').each(function(){
+                    if(qty != '')
+                    {
+                        total = parseInt(qty)*parseInt(price);
+                        available_stock = parseInt(stock)-parseInt(qty);
+
+                    }
+                });
+                $('#total1').html(total);
+                $('#total').val(total);
+                $('#in_stock').html(available_stock);
+            });
+
+        });
+
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -152,4 +181,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+
 @endpush
