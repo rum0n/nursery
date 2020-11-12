@@ -47,6 +47,7 @@ class TreeController extends Controller
             'name'=>'required',
             'category_id'=>'required',
             'price'=>'required|numeric',
+            'qty'=>'required|numeric',
             'details'=>'required',
             'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -58,6 +59,7 @@ class TreeController extends Controller
         $tree->category_id = $request->category_id;
         $tree->user_id = $user_id;
         $tree->price = $request->price;
+        $tree->qty = $request->qty;
         $tree->details = $request->details;
 
         if ($request->hasFile('picture')) {
@@ -123,12 +125,14 @@ class TreeController extends Controller
             'name'=>'required',
             'category_id'=>'required',
             'price'=>'required|numeric',
+            'qty'=>'required|numeric',
         ]);
 
 
         $tree->name = $request->name;
         $tree->category_id = $request->category_id;
         $tree->price = $request->price;
+        $tree->qty = $request->qty;
         $tree->details = $request->details;
         $img = $tree->picture;
 

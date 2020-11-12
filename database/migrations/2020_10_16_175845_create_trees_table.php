@@ -19,6 +19,7 @@ class CreateTreesTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->float('price');
+            $table->integer('qty');
             $table->text('details');
             $table->string('picture');
             $table->string('status')->default('Pending');

@@ -9,12 +9,21 @@
             <div class="form_area col-md-10 col-lg-10 col-lg-offset-1">
                 <form action="{{ route('search_tree') }}" method="get" >
                     @csrf
-                    <div class="col-lg-8" >
+                    <div class="col-lg-5" >
                         <div class="form-group">
                             <input type="text" class="form-control input-lg"  name="tree_name" value="{{ old('tree_name') }}" placeholder="Search Here" required>
                         </div>
                     </div>
-                    <div class="col-lg-4" >
+
+                    <div class="col-lg-4">
+                            <select class="form-control input-lg" id="filter" name="filter">
+                                <option value="">Filter Price</option>
+                                <option value="asc">Low to High</option>
+                                <option value="desc">High To Low</option>
+                            </select>
+                    </div>
+
+                    <div class="col-lg-3" >
                         <div class="form-group">
                             <input type="submit" class="form-control btn-primary input-lg"  name="" value="Search" >
                         </div>

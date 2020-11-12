@@ -51,6 +51,12 @@
 
                         <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                             <div class="form-group">
+                                <input type="number" name="qty"  value="{{ old('qty') }}" class="form_input form-control input-lg" placeholder="Enter Tree Quantity" min="1"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                            <div class="form-group">
                                 <textarea class="form-control" name="details" placeholder="Enter Tree Details" rows="3" ></textarea>
                             </div>
 

@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_mobile');
             $table->string('customer_email')->nullable();
             $table->double('amount');
+            $table->integer('qty');
             $table->string('currency');
             $table->string('status');
             $table->string('customer_address');

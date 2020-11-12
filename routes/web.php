@@ -22,6 +22,7 @@ Route::get('tree/view/{id}', 'FrontController@view_tree')->name('single_tree');
 
 Route::get('search/tree', 'FrontController@search_tree')->name('search_tree');
 
+
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 

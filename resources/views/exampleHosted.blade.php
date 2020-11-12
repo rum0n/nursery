@@ -77,17 +77,20 @@
                         <label>Shipping Address (Mandatory)</label>
                         <input type="text" name="customer_address"  value="{{ old('customer_address') }}" class="form_input form-control input-lg" placeholder="Your Address"/>
                     </div>
-
                 </div>
 
                 <div class="col-md-11 col-lg-11">
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" name="qty" id="qty" value="{{ old('qty') }}" class="form_input form-control input-lg" placeholder="Tree Quantity" min="1" max="{{$tree->qty}}"/>
+                    </div>
+                </div>
 
+                <div class="col-md-11 col-lg-11">
                     <div class="form-group">
                         <label for="price">Amount to be Paid</label>
                         <input  type="text" class="form_input form-control input-lg" value="{{ round($tree->price,2) }}" id="price" name="" disabled>
-
                     </div>
-
                 </div>
 
                 <div class="col-md-11 col-lg-11">
@@ -101,21 +104,30 @@
         </div>
 
 
+
         <div class="col-md-4 cart">
             <div class="col-md-12">
+
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="">Tree</span>
                 </h4>
+                <h5 class="text-right mb-3 mt-1 text-primary"><b>In Stock : {{ $tree->qty }}</b></h5>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                             <h5 class="my-0"><b> Name : {{ $tree->name }}</b></h5>
                             <h5 class="">Category : {{ $tree->category->name }}</h5>
                             <h5 class="">Nursery : {{ $tree->user->name }}</h5>
+
                         </div>
                         <span class="">{{ str_limit($tree->details,100) }}</span>
+
                     </li>
 
+
+                    {{--<li class="list-group-item d-flex justify-content-between">--}}
+                        {{--<strong>In Stock :{{ $tree->qty }} </strong>--}}
+                    {{--</li>--}}
 
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total Price (BDT) : </span>

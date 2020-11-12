@@ -19,27 +19,51 @@ class FrontController extends Controller
     public function view_tree($id)
     {
         $tree = Tree::find($id);
-//        dd($trees);
+
         return view('view_tree', compact('tree'));
     }
 
     //============= Search House =================
     public function search_tree(Request $request)
     {
+//        dd($request->all());
         if($request->tree_name == '') {
             Toastr::warning('Please type something','Empty field!');
             return redirect()->back();
         }
-//        $categories = Category::where('name','LIKE','%'.$request->tree_name."%")->get('id');
-//        dd($categories);
 
-        $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
-            ->orwhere('price','LIKE','%'.$request->tree_name."%")
-            ->orwhere('details','LIKE','%'.$request->tree_name."%")
-            ->orwhere('category_id','LIKE','%'.$request->tree_name."%")
-            ->where('status','Approved')
-            ->orderBy('id','DESC')
-            ->paginate(6);
+        if($request->filter == ''){
+
+            $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
+                ->orwhere('price','LIKE','%'.$request->tree_name."%")
+                ->orwhere('details','LIKE','%'.$request->tree_name."%")
+                ->orwhere('category_id','LIKE','%'.$request->tree_name."%")
+                ->where('status','Approved')
+                ->orderBy('id','DESC')
+                ->paginate(6);
+        }
+
+        if($request->filter == 'asc'){
+
+            $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
+                ->orwhere('price','LIKE','%'.$request->tree_name."%")
+                ->orwhere('details','LIKE','%'.$request->tree_name."%")
+                ->orwhere('category_id','LIKE','%'.$request->tree_name."%")
+                ->where('status','Approved')
+                ->orderBy('price','asc')
+                ->paginate(6);
+
+        }
+        if($request->filter == 'desc'){
+
+            $trees = Tree::where('name','LIKE','%'.$request->tree_name."%")
+                ->orwhere('price','LIKE','%'.$request->tree_name."%")
+                ->orwhere('details','LIKE','%'.$request->tree_name."%")
+                ->orwhere('category_id','LIKE','%'.$request->tree_name."%")
+                ->where('status','Approved')
+                ->orderBy('price','DESC')
+                ->paginate(6);
+        }
 
 
         $rows = $trees->count();
@@ -49,9 +73,9 @@ class FrontController extends Controller
             return redirect()->back();
         }
         $message = $request->tree_name;
-//        $results = 'About '.$rows.'results found';
+        $filter = $request->filter;
 
-        return view('search', compact('trees','rows','message'));
+        return view('search', compact('trees','rows','message','filter'));
 
     }
 

@@ -143,3 +143,8 @@ h1,h2,h3,h4,h5,h6,p,ul,li,span{margin:0px; padding:0px;}
   color: #15dce6;
 }
 
+
+#filter {
+  background: transparent;
+  color: #FFF;
+}

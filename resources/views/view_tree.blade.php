@@ -23,6 +23,7 @@
                     <h4 style="text-align: justify;" class="text-center text-info">Details :</h4>
                     <h4 style="text-align: justify;" class="text-center">{{ $tree->details }}</h4>
                     <h3 style="text-align: justify;color: blue;" class="text-center">Price : {{ $tree->price }} Tk.</h3>
+                    <h3 style="text-align: justify;color: #298ee6;" class="text-center">Available In Stock : {{ $tree->qty }} </h3>
                 </div>
             </div>
         </div>

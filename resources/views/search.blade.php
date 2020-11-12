@@ -7,11 +7,20 @@
     <div class="container" >
         <form action="{{ route('search_tree') }}" method="get">
             @csrf
-            <div class="col-lg-8" >
+            <div class="col-lg-4" >
                 <div class="form-group">
                     <input type="text" class="form-control input-lg"  name="tree_name" value="{{ $message }}" placeholder="Search Here" required>
                 </div>
             </div>
+
+            <div class="col-lg-4">
+                <select class="form-control input-lg" id="" name="filter">
+                    <option value="" {{ $filter == '' ? 'selected' : '' }}>Filter Price</option>
+                    <option value="asc" {{ $filter == 'asc' ? 'selected' : '' }}>Low to High</option>
+                    <option value="desc" {{ $filter == 'desc' ? 'selected' : '' }}>High To Low</option>
+                </select>
+            </div>
+
             <div class="col-lg-4" >
                 <div class="form-group">
                     <input type="submit" class="form-control btn-primary input-lg"  name="" value="Search" >
@@ -31,8 +40,8 @@
                         <img src="{{ asset('images/treePic/'.$tree->picture) }}">
                         <div class="centered col-md-4 col-lg-4">
                             <h2>{{ $tree->name }}</h2><br>
-                            <h3>{{ $tree->category->name }}</h3>
-                            {{--<h3>{{ str_limit($tree->details, 15) }}</h3>--}}
+                            <h3>{{ $tree->category->name }}</h3><br>
+                            <h3>{{ str_limit($tree->price, 15) }} Tk</h3>
 
                         </div>
                     </a>
